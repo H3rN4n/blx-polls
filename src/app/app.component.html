@@ -7,7 +7,7 @@
 
     <hr>
 
-    <div *ngIf="!hasVoted" class="animated bounceInUp">
+    <div *ngIf="hasVoted" class="animated bounceInUp">
       <button [ngClass]="getColor(answer)" *ngFor="let answer of answers; let i = index" (click)="vote(answer)">{{answer | uppercase}}</button>
     </div>
 

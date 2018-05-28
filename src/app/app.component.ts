@@ -30,7 +30,6 @@ export class AppComponent implements OnInit {
       .valueChanges()
       .pipe(
         tap(doc => {
-          console.log(doc);
           this.doc = doc;
           this.answers = Object.keys(doc.answers);
           this.dataLoaded = true;
@@ -66,8 +65,7 @@ export class AppComponent implements OnInit {
   }
 
   vote(answer: string) {
-    // this.hasVoted = true;
-    console.log(answer, this.getVotesFor(answer) + 1);
+    this.hasVoted = true;
     const result = {};
     const newResult = result[answer] = { votes: this.getVotesFor(answer) + 1 };
 
