@@ -6,14 +6,13 @@ import {
 import { tap } from 'rxjs/operators';
 
 @Component({
-  selector: 'user-poll',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  selector: 'app-poll',
+  templateUrl: './poll.component.html',
+  styleUrls: ['./poll.component.css'],
   encapsulation: ViewEncapsulation.Native
 })
-export class AppComponent implements OnInit {
+export class PollComponent implements OnInit {
   @Input() key: string;
-  @Input() module: string;
   doc: any;
   answers: Array<string> = [];
   hasVoted = false;

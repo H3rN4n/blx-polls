@@ -6,6 +6,11 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 import { AppComponent } from './app.component';
 import { createCustomElement } from '@angular/elements';
+import { PricingTableComponent } from './pricing-table/pricing-table.component';
+import { PollComponent } from './poll/poll.component';
+import { CreditsComponent } from './credits/credits.component';
+import { PurchaseCreditsComponent } from './purchase-credits/purchase-credits.component';
+import { PurchaseProductsComponent } from './purchase-products/purchase-products.component';
 
 const config = {
   apiKey: "AIzaSyBpXdrejVZAm3HECrt625BIUOQtR_5ABWw",
@@ -18,7 +23,12 @@ const config = {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PricingTableComponent,
+    PollComponent,
+    CreditsComponent,
+    PurchaseCreditsComponent,
+    PurchaseProductsComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +50,6 @@ export class AppModule {
 
   ngDoBootstrap() {
     const el = createCustomElement(AppComponent, { injector: this.injector });
-    customElements.define('user-poll', el);
+    customElements.define('element-app', el);
    }
 }
