@@ -1,7 +1,9 @@
 <div>
-  <app-poll [key]="key" *ngIf="module === 'poll' && key"></app-poll>
-  <app-pricing-table *ngIf="module === 'pricing-table'"></app-pricing-table>
-  <app-credits *ngIf="module === 'credits'"></app-credits>
-  <app-purchase-credits *ngIf="module === 'purchase-credits'"></app-purchase-credits>
-  <app-purchase-products *ngIf="module === 'purchase-products'"></app-purchase-products>
+  <app-splash *ngIf="show == 'splash'"></app-splash>
+  <app-poll [key]="key" *ngIf="show == 'poll'"></app-poll>
+  <app-contact *ngIf="show == 'contact'"></app-contact>
+
+  <button (click)="show = 'splash'">Show Splash</button>
+  <button (click)="show = 'poll'">Show Poll</button>
+  <button (click)="show = 'contact'">Show Contact</button>
 </div>

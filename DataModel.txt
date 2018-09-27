@@ -1,0 +1,53 @@
+
+//Poll Table
+
+pollId: "",
+title: "",
+bgImage: "",
+bgColor: "",
+primaryColor: "",
+secundaryColor: "",
+
+contact_active: true/false
+contact_first: true/false
+
+questions = [
+    {
+        text: "",
+        type: "", //radio, checkbox, ?input
+        answers: [
+            {
+                text: "",
+                correct: 1/0
+            }
+        ]
+    }
+]
+
+
+// Results Table
+resultsId
+contactInfo: {
+    firstName
+    lastName
+    email
+}
+pollId
+results: [
+    q1: 'error/correct'
+]
+
+
+
+//Methods
+getPoll
+postResults
+
+//admin
+getResult
+exportCsv
+
+
+
+
+

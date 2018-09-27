@@ -6,11 +6,9 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 import { AppComponent } from './app.component';
 import { createCustomElement } from '@angular/elements';
-import { PricingTableComponent } from './pricing-table/pricing-table.component';
 import { PollComponent } from './poll/poll.component';
-import { CreditsComponent } from './credits/credits.component';
-import { PurchaseCreditsComponent } from './purchase-credits/purchase-credits.component';
-import { PurchaseProductsComponent } from './purchase-products/purchase-products.component';
+import { ContactComponent } from './contact/contact.component';
+import { SplashComponent } from './splash/splash.component';
 
 const config = {
   apiKey: "AIzaSyBpXdrejVZAm3HECrt625BIUOQtR_5ABWw",
@@ -24,11 +22,9 @@ const config = {
 @NgModule({
   declarations: [
     AppComponent,
-    PricingTableComponent,
     PollComponent,
-    CreditsComponent,
-    PurchaseCreditsComponent,
-    PurchaseProductsComponent
+    ContactComponent,
+    SplashComponent,
   ],
   imports: [
     BrowserModule,
