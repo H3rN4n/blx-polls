@@ -1,24 +1,14 @@
-<div class="poll-container animated zoomIn">
-  <div class="loading" *ngIf="!dataLoaded">
-    Loading...
-  </div>
-  <div class="poll" *ngIf="dataLoaded">
-    <h2>Poll: {{doc.q | uppercase}}</h2>
+<div class="poll-container animated">
 
-    <hr>
-
-    <div *ngIf="!hasVoted" class="animated bounceInUp">
-      <button [ngClass]="getColor(answer)" *ngFor="let answer of answers; let i = index" (click)="vote(answer)">{{answer | uppercase}}</button>
-    </div>
-
-    <div *ngIf="hasVoted" class="results animated rotateInUpLeft">
-      <h4 *ngFor="let answer of answers; let i = index">
-        <span [ngClass]="getBgColor(answer)" class="badge">{{answer}}</span> {{ getVotesFor(answer) }} votes | {{ getPercent(answer) | number }}%</h4>
-      <div class="progress progress-stacked progress-striped progress-animate progress-large">
-        <span *ngFor="let answer of answers; let i = index" [ngStyle]="{'width.%': getPercent(answer) }" [ngClass]="getBgColor(answer)"></span>
-      </div>
-    </div>
-    
+  {{poll | json}}
+  <div class="poll hidden" *ngFor="let question of poll" [class.hidden]="!question.active">
+     <h2>Poll: {{question.title | uppercase}}</h2>
+    <ul>
+      <li *ngFor="let item of question.answers">{{item.text}}</li>
+    </ul>
   </div>
  
+  
+  <button (click)="pollActivePositionPrevious();">Prev</button>
+  <button (click)="pollActivePositionNext();">Next</button>
 </div>

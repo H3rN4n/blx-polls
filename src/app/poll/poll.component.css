@@ -233,20 +233,6 @@ button {
     }
   }
 
-
-  .bg-red {
-    background-color: #d9534f !important;
-  }
-
-  .bg-yellow {
-    background-color: #F5DC28  !important;
-  }
-
-  .bg-green {
-    background-color: #5cb85c  !important;
-  }
-
-  .about {
-      font-size: 0.85em;
-      color: #838383;
-  }
+.poll.hidden {
+  display: none;
+}

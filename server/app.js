@@ -28,6 +28,13 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 //Database connection
 app.use(function (req, res, next) {
   global.connection = mysql.createConnection({
@@ -55,7 +62,8 @@ app.use(function (req, res, next) {
         'country VARCHAR(30),' +
         'organization VARCHAR(30),' +
         'jobTitle VARCHAR(30),' +
-        'comments VARCHAR(120)' +
+        'comments VARCHAR(120),' +
+        'pollResult VARCHAR(255)' +
         ')',
         function (err) {
           if (err) throw err;

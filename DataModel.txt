@@ -4,6 +4,7 @@
 pollId: "",
 title: "",
 bgImage: "",
+questionsBgImage: "",
 bgColor: "",
 primaryColor: "",
 secundaryColor: "",
@@ -11,14 +12,43 @@ secundaryColor: "",
 contact_active: true/false
 contact_first: true/false
 
+
+//radio, checkbox, ?input
+
 questions = [
     {
-        text: "",
-        type: "", //radio, checkbox, ?input
+        text: "Lobo esta?",
+        type: "radio", 
         answers: [
             {
-                text: "",
-                correct: 1/0
+                text: "se esta poniendo el pantalon",
+                correct: false
+            },
+            {
+                text: "se esta poniendo el camisa",
+                correct: false
+            },
+            {
+                text: "siiii",
+                correct: true
+            }
+        ]
+    },
+    {
+        text: "Sal de ahí chivita chivita?",
+        type: "radio", 
+        answers: [
+            {
+                text: "sal de ahi de ese lugar",
+                correct: true
+            },
+            {
+                text: "vente pa ca",
+                correct: false
+            },
+            {
+                text: "siiii",
+                correct: false
             }
         ]
     }
