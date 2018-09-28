@@ -1,14 +1,13 @@
 <div class="poll-container animated">
-
-  {{poll | json}}
-  <div class="poll hidden" *ngFor="let question of poll" [class.hidden]="!question.active">
-     <h2>Poll: {{question.title | uppercase}}</h2>
+  <div class="poll hidden" *ngFor="let question of poll.questions; let questionIndex = index" [attr.data-index]="questionIndex" [class.hidden]="!question.active">
+    <h2>Poll: {{question.text}}</h2>
     <ul>
-      <li *ngFor="let item of question.answers">{{item.text}}</li>
+      <li *ngFor="let item of question.answers; let answerIndex = index" [attr.data-index]="answerIndex">
+        <input (change)="onSelectionChange(questionIndex, answerIndex)" [name]="question.text" [type]="question.type"> {{item.text}}</li>
     </ul>
   </div>
- 
-  
+
+
   <button (click)="pollActivePositionPrevious();">Prev</button>
   <button (click)="pollActivePositionNext();">Next</button>
 </div>

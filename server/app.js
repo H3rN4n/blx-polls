@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
@@ -52,7 +52,7 @@ app.use(function (req, res, next) {
     connection.query('USE belatrix_polls', function (err) {
       if (err) throw err;
 
-      connection.query('CREATE TABLE IF NOT EXISTS results(' +
+      connection.query('CREATE TABLE IF NOT EXISTS contacts(' +
         'id INT NOT NULL AUTO_INCREMENT,' +
         'PRIMARY KEY(id),' +
         'pollId VARCHAR(30),' +
@@ -62,8 +62,18 @@ app.use(function (req, res, next) {
         'country VARCHAR(30),' +
         'organization VARCHAR(30),' +
         'jobTitle VARCHAR(30),' +
-        'comments VARCHAR(120),' +
-        'pollResult VARCHAR(255)' +
+        'comments VARCHAR(120)' +
+        ')',
+        function (err) {
+          if (err) throw err;
+        });
+
+      connection.query('CREATE TABLE IF NOT EXISTS results(' +
+        'id INT NOT NULL AUTO_INCREMENT,' +
+        'PRIMARY KEY(id),' +
+        'pollId VARCHAR(30),' +
+        'question VARCHAR(140),' +
+        'answer VARCHAR(255)' +
         ')',
         function (err) {
           if (err) throw err;
