@@ -49,8 +49,8 @@ app.use(function (req, res, next) {
 
   global.connection.connect();
   // // Database setup
-  connection = migrations(global.connection);
-  // connection = dummyData(global.connection)
+  migrations(global.connection);
+  dummyData(global.connection)
 
   next();
 });

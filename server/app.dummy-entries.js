@@ -1,66 +1,42 @@
 const generateDummyEntries = function (connection) {
 
-  //Poll Table
+  //   Poll Table
+  //   pollId: "",
+  //   title: "",
+  //   bgImage: "",
+  //   questionsBgImage: "",
+  //   bgColor: "",
+  //   primaryColor: "",
+  //   secundaryColor: "",
 
-//   pollId: "",
-//   title: "",
-//   bgImage: "",
-//   questionsBgImage: "",
-//   bgColor: "",
-//   primaryColor: "",
-//   secundaryColor: "",
+  var dummyPoll = 'INSERT INTO polls (title, bgImage, questionsBgImage, bgColor, primaryColor, secundaryColor )' +
+    'VALUES ("sal de ahí chivita chivita?", "", "","","","")';
 
-//   contact_active: true / false
-//   contact_first: true / false
+  var dummyQuestion = function (pollId) {
+    return 'INSERT INTO questions (pollId, text, type)' +
+      'VALUES ( ' + pollId + ', "test question", "radio")'
+  };
 
+  var dummyAnswer = function (pollId, questionId) {
+    return 'INSERT INTO answers (pollId, questionId, text, valid)' +
+      'VALUES ( ' + pollId + ', ' + questionId + ',"test answer", "true")'
+  };
 
-  //radio, checkbox, ?input
-
-  var questions = [{
-      text: "Lobo esta?",
-      type: "radio",
-      answers: [{
-          text: "se esta poniendo el pantalon",
-          correct: false
-        },
-        {
-          text: "se esta poniendo el camisa",
-          correct: false
-        },
-        {
-          text: "siiii",
-          correct: true
-        }
-      ]
-    },
-    {
-      text: "Sal de ahí chivita chivita?",
-      type: "radio",
-      answers: [{
-          text: "sal de ahi de ese lugar",
-          correct: true
-        },
-        {
-          text: "vente pa ca",
-          correct: false
-        },
-        {
-          text: "siiii",
-          correct: false
-        }
-      ]
+  connection.query(dummyPoll,
+    function (error, results, fields) {
+      if (error) throw error;
+      let pollId = results.insertId;
+      connection.query(dummyQuestion(pollId),
+        function (error, results, fields) {
+          if (error) throw error;
+          let questionId = results.insertId;
+          connection.query(dummyAnswer(pollId, questionId),
+            function (error, results, fields) {
+              if (error) throw error;
+            })
+        })
     }
-  ]
-
-  console.log("poll dyummy")
-
-  connection.query('INSERT INTO polls (title, bgImage, questionsBgImage, bgColor, primaryColor, secundaryColor, questions )' +
-    'VALUES (,"sal de ahí chivita chivita?, "", "","","","",'
-     + JSON.stringify(questions) + ' )' +
-    ')',
-    function (err) {
-      if (err) throw err;
-    });
+  );
 
   return connection;
 }

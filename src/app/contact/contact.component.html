@@ -1,5 +1,28 @@
-<p>
-  contact works!
-</p>
-<button (click)="send()">Enviar desafio</button>
-<br>
+<section class="form-section">
+  <header>
+    <div class="main-container box-sizing-border logo-box">
+      <a href="#"><img src="/assets/images/orange-logo.png"></a>
+    </div>
+  </header>
+  <div class="main-container box-sizing-border">
+    <div class="row">
+      <div class="poll-box">
+        <h2 class="section-title">Completá el formulario y participá</h2>
+        <div class="form-box">
+           <form>
+            <input class="w-input box-sizing-border" placeholder="Apellidos*" type="text" name="">
+            <input class="w-input box-sizing-border" placeholder="Nombre*" type="text" name="">
+            <input class="w-input box-sizing-border" placeholder="Email*" type="text" name="">
+            <input class="w-input box-sizing-border" placeholder="País*" type="text" name="">
+            <input class="w-input box-sizing-border" placeholder="Organización" type="text" name="">
+            <input class="w-input box-sizing-border" placeholder="Empleo" type="text" name="">
+            <textarea class="w-text-area box-sizing-border" placeholder="Preguntas y comentarios..." name="" form=""></textarea>
+            <div class="text-center">
+              <button class="poll-full-button my-transition" (click)="send()">enviar</button>
+            </div>
+          </form> 
+        </div>
+      </div>
+      </div>
+  </div>
+</section>

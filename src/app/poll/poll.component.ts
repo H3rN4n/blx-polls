@@ -10,8 +10,8 @@ import {
 @Component({
   selector: 'app-poll',
   templateUrl: './poll.component.html',
-  styleUrls: ['./poll.component.css'],
-  encapsulation: ViewEncapsulation.Native
+  styleUrls: ['./../../assets/css/styles.css', './poll.component.css'],
+  // encapsulation: ViewEncapsulation.Native
 })
 export class PollComponent implements OnInit {
   @Input() poll: Array<any>;

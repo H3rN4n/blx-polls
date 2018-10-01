@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
   encapsulation: ViewEncapsulation.Native
 })
 export class AppComponent implements OnInit {
-  @Input() pollId: string;
+  @Input() pollId: number = 1;
   show: string = 'splash';
   pollResult: any;
   pollDetail: any;
@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.getPollDetail();
+    this.getPollDetail(this.pollId);
   }
 
   moveToPolls(val) {
@@ -28,9 +28,9 @@ export class AppComponent implements OnInit {
     this.pollResult = poll;
   }
 
-  getPollDetail(){
+  getPollDetail(pollId){
 
-    var resultPostUrl = "http://localhost:4001/api/v1/polls/" + this.pollId;
+    var resultPostUrl = "http://localhost:4001/api/v1/polls/" + pollId;
 
     this.http.get<any>(resultPostUrl)
       .subscribe(poll => {
