@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs'
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'user-poll',
@@ -9,14 +8,10 @@ import { Observable } from 'rxjs'
   encapsulation: ViewEncapsulation.Native
 })
 export class AppComponent implements OnInit {
-  @Input() key: string;
-  @Input() module: string;
+  @Input() pollId: string;
   show: string = 'splash';
   pollResult: any;
-
-  //Set Poll Id
-  pollId = 1;
-  pollDetail;
+  pollDetail: any;
 
   constructor(private http: HttpClient) {}
 
@@ -41,10 +36,7 @@ export class AppComponent implements OnInit {
       .subscribe(poll => {
         this.pollDetail = poll.response;
         this.pollDetail[0]['active'] = true;
-      });
-      // .pipe(
-      //   catchError(this.handleError('addHero', hero))
-      // );
+      })
     
   }
 
@@ -61,8 +53,5 @@ export class AppComponent implements OnInit {
         console.log(poll);
         alert(poll.message || poll.error)
       });
-      // .pipe(
-      //   catchError(this.handleError('addHero', hero))
-      // );
   }
 }

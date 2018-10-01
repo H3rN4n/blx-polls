@@ -7,6 +7,9 @@ var bodyParser = require('body-parser');
 var mysql = require('mysql');
 var http = require('http');
 
+var CONSTANTS = require('./app.config');
+var migrations = require('./app.migrations');
+var dummyData = require('./app.dummy-entries');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -38,55 +41,16 @@ app.use(function(req, res, next) {
 //Database connection
 app.use(function (req, res, next) {
   global.connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'belatrix_polls'
+    host: CONSTANTS.dbConfig.host,
+    user: CONSTANTS.dbConfig.user,
+    password: CONSTANTS.dbConfig.password,
+    database: CONSTANTS.dbConfig.database
   });
 
-  connection.connect();
+  global.connection.connect();
   // // Database setup
-
-  connection.query('CREATE DATABASE IF NOT EXISTS belatrix_polls', function (err) {
-    if (err) throw err;
-    connection.query('USE belatrix_polls', function (err) {
-      if (err) throw err;
-
-      connection.query('CREATE TABLE IF NOT EXISTS results(' +
-        'id INT NOT NULL AUTO_INCREMENT,' +
-        'PRIMARY KEY(id),' +
-        'pollId VARCHAR(30),' +
-        'firstname VARCHAR(30),' +
-        'lastname VARCHAR(30),' +
-        'email VARCHAR(64),' +
-        'country VARCHAR(30),' +
-        'organization VARCHAR(30),' +
-        'jobTitle VARCHAR(30),' +
-        'comments VARCHAR(120),' +
-        'pollResult VARCHAR(255)' +
-        ')',
-        function (err) {
-          if (err) throw err;
-        });
-
-      connection.query('CREATE TABLE IF NOT EXISTS polls(' +
-        'id INT NOT NULL AUTO_INCREMENT,' +
-        'PRIMARY KEY(id),' +
-        'title VARCHAR(100),' +
-        'bgImage VARCHAR(255),' +
-        'questionsBgImage VARCHAR(255),' +
-        'bgColor VARCHAR(64),' +
-        'primaryColor VARCHAR(30),' +
-        'secundaryColor VARCHAR(30),' +
-        'questions VARCHAR(255)' +
-        ')',
-        function (err) {
-          if (err) throw err;
-        });
-    });
-
-  });
-
+  connection = migrations(global.connection);
+  // connection = dummyData(global.connection)
 
   next();
 });
