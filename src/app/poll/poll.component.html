@@ -1,85 +1,88 @@
 <div class="poll-container animated">
   <!-- <div class="poll hidden" *ngFor="let question of poll" [class.hidden]="!question.active">
-     <h2>Poll: {{question.title | uppercase}}</h2>
+    <h2>Poll: {{question.title | uppercase}}</h2>
     <ul>
       <li *ngFor="let item of question.answers">{{item.text}}</li>
     </ul>
   </div> -->
 
   <section class="poll-section">
-		<header>
-			<div class="main-container box-sizing-border logo-box">
-				<a href="#"><img src="/assets/images/orange-logo.png"></a>
-			</div>
-		</header>
-		<div class="main-container box-sizing-border">
-			<div class="row">
-				<div class="poll-box">
-					<h2 class="section-title">Sólo tenés que responder tres preguntas sobre Node</h2>
-					<article class="questions-box">
-						<div class="question">
-							<div class="row">
-								<div class="number-container">
-									<div class="question-number box-sizing-border">1</div>
-								</div>
-								<div class="question-container">
-									<p>¿Qué módulo es utilizado para crear un servidor web en Node.js?</p>
-								</div>
-							</div>
-						</div>
-						<button class="option no-selected-option my-transition">
-							<div class="row">
-								<div class="icon-container">
-									<div class="letter box-sizing-border">a</div>
-								</div>
-								<div class="answer-container box-sizing-border">
-									<p class="my-transition">Server</p>
-								</div>
-							</div>
-						</button>
-						<button class="option no-selected-option my-transition">
-							<div class="row">
-								<div class="icon-container">
-									<div class="letter box-sizing-border">b</div>
-								</div>
-								<div class="answer-container box-sizing-border">
-									<p class="my-transition">Server</p>
-								</div>
-							</div>
-						</button>
-						<button class="option selected-option my-transition">
-							<div class="row">
-								<div class="icon-container">
-									<div class="icon box-sizing-border"></div>
-								</div>
-								<div class="answer-container box-sizing-border">
-									<p class="my-transition">Las promesas son lanzadas secuencialmente según el orden que ocupan y se ejecutan una a continuación de la otra</p>
-								</div>
-							</div>
-						</button>
-						<button class="option no-selected-option my-transition">
-							<div class="row">
-								<div class="icon-container">
-									<div class="letter box-sizing-border">d</div>
-								</div>
-								<div class="answer-container box-sizing-border">
-									<p class="my-transition">Server</p>
-								</div>
-							</div>
-						</button>
-					</article>
-					<div class="buttons-poll-container poll-btns-desktop">
-						<a class="poll-ghost-button my-transition left" (click)="pollActivePositionPrevious();">anterior</a>
-						<a class="poll-ghost-button my-transition right" (click)="pollActivePositionNext();">siguiente</a>
-						<div class="my-clearfix"></div>
-					</div>
-					<div class="buttons-poll-container poll-btns-desktop">
-						<a class="poll-ghost-button my-transition left" (click)="pollActivePositionPrevious();">anterior</a>
-						<a class="poll-full-button my-transition right" (click)="vote();">terminar</a>
-						<div class="my-clearfix"></div>
-					</div>
-				</div>
-		  	</div>
-		</div>
-	</section>
+    <header>
+      <div class="main-container box-sizing-border logo-box">
+        <a href="#">
+          <img src="/assets/images/orange-logo.png">
+        </a>
+      </div>
+    </header>
+    <div class="main-container box-sizing-border">
+      <div class="row">
+        <div class="poll-box">
+          <h2 class="section-title">Sólo tenés que responder tres preguntas sobre Node</h2>
+          <article class="questions-box">
+            <div class="question">
+              <div class="row">
+                <div class="number-container">
+                  <div class="question-number box-sizing-border">1</div>
+                </div>
+                <div class="question-container">
+                  <p>¿Qué módulo es utilizado para crear un servidor web en Node.js?</p>
+                </div>
+              </div>
+            </div>
+            <button class="option no-selected-option my-transition">
+              <div class="row">
+                <div class="icon-container">
+                  <div class="letter box-sizing-border">a</div>
+                </div>
+                <div class="answer-container box-sizing-border">
+                  <p class="my-transition">Server</p>
+                </div>
+              </div>
+            </button>
+            <button class="option no-selected-option my-transition">
+              <div class="row">
+                <div class="icon-container">
+                  <div class="letter box-sizing-border">b</div>
+                </div>
+                <div class="answer-container box-sizing-border">
+                  <p class="my-transition">Server</p>
+                </div>
+              </div>
+            </button>
+            <button class="option selected-option my-transition">
+              <div class="row">
+                <div class="icon-container">
+                  <div class="icon box-sizing-border"></div>
+                </div>
+                <div class="answer-container box-sizing-border">
+                  <p class="my-transition">Las promesas son lanzadas secuencialmente según el orden que ocupan y se ejecutan una a continuación de
+                    la otra</p>
+                </div>
+              </div>
+            </button>
+            <button class="option no-selected-option my-transition">
+              <div class="row">
+                <div class="icon-container">
+                  <div class="letter box-sizing-border">d</div>
+                </div>
+                <div class="answer-container box-sizing-border">
+                  <p class="my-transition">Server</p>
+                </div>
+              </div>
+            </button>
+          </article>
+          <div class="buttons-poll-container poll-btns-desktop">
+            <a class="poll-ghost-button my-transition left" (click)="pollActivePositionPrevious();">anterior</a>
+            <a class="poll-ghost-button my-transition right" (click)="pollActivePositionNext();">siguiente</a>
+            <div class="my-clearfix"></div>
+          </div>
+          <div class="buttons-poll-container poll-btns-desktop">
+            <a class="poll-ghost-button my-transition left" (click)="pollActivePositionPrevious();">anterior</a>
+            <a class="poll-full-button my-transition right" (click)="vote();">terminar</a>
+            <div class="my-clearfix"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
