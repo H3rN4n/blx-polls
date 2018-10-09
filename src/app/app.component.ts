@@ -4,14 +4,16 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'user-poll',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['./../assets/css/styles.css', './app.component.css'],
   encapsulation: ViewEncapsulation.Native
 })
 export class AppComponent implements OnInit {
-  @Input() pollId: number = 1;
+  @Input() pollId: string = '5bb625cd57cd4127989cc4f8';
   show: string = 'splash';
   pollResult: any;
-  pollDetail: any;
+  pollDetail: any = {
+    questions: []
+  }
 
   constructor(private http: HttpClient) {}
 
@@ -30,18 +32,19 @@ export class AppComponent implements OnInit {
 
   getPollDetail(pollId){
 
-    var resultPostUrl = "http://localhost:4001/api/v1/polls/" + pollId;
+    var resultPostUrl = "http://localhost:4001/api/polls/" + pollId;
 
     this.http.get<any>(resultPostUrl)
       .subscribe(poll => {
-        this.pollDetail = poll.response;
-        this.pollDetail[0]['active'] = true;
+        console.log(poll)
+        this.pollDetail = poll;
+        this.pollDetail.questions[0]['active'] = true;
       })
     
   }
 
   getContactDetail (contactInfo: any){
-    var resultPostUrl = "http://localhost:4001/api/v1/results";
+    var resultPostUrl = "http://localhost:4001/api/results";
     var results = {
       pollId: this.pollId,
       contactInfo,

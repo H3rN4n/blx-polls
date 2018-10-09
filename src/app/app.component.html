@@ -1,7 +1,18 @@
 <div>
-  <app-splash (next)="moveToPolls($event)" *ngIf="show == 'splash'"></app-splash>
-  <app-poll (sendVotes)="getVotes($event)" [poll]="pollDetail" *ngIf="show == 'poll'"></app-poll>
-  <app-contact (sendContact)="getContactDetail($event)" *ngIf="show == 'contact'"></app-contact>
+	<app-splash (next)="moveToPolls($event)"></app-splash>
+  <app-poll (sendVotes)="getVotes($event)" *ngIf="pollDetail.questions.length" [poll]="pollDetail"></app-poll>
+  <app-contact (sendContact)="getContactDetail($event)"></app-contact>
+  <footer>
+		<div class="main-container box-sizing-border">
+			<div class="logo-box left">
+				<a href="#"><img src="/assets/images/white-logo.png"></a>
+			</div>
+			<div class="copyright right">
+				<p>Copyright © 2018 Belatrix Software. All rights reserved.</p>
+			</div>
+			<div class="my-clearfix"></div>
+		</div>
+	</footer>
   <pre>{{pollDetail | json}}</pre>
   <pre>{{pollResult | json}}</pre>
 </div>
