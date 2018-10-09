@@ -14,29 +14,45 @@ import {
   encapsulation: ViewEncapsulation.Native
 })
 export class PollComponent implements OnInit {
-  @Input() poll: Array<any>;
+  @Input() poll: any;
   @Output() sendVotes: EventEmitter<any> = new EventEmitter<any>();
   pollActivePosition: number = 0;
+  lastQuestion: boolean = false;
+  firstQuestion: boolean = true;
 
-  constructor() {}
+  constructor() { }
 
   pollActivePositionNext() {
-    if (this.poll.length -1 == this.pollActivePosition) {
+    this.firstQuestion = false;
+    this.poll.questions[this.pollActivePosition].active = false;
+    this.pollActivePosition == this.pollActivePosition++;
+    this.poll.questions[this.pollActivePosition].active = true;
+
+    if (this.poll.questions.length - 1 == this.pollActivePosition) {
       // this.vote(this.poll);
+      this.lastQuestion = true;
     } else {
-      this.poll[this.pollActivePosition].active = false;
-      this.pollActivePosition == this.pollActivePosition++;
-      this.poll[this.pollActivePosition].active = true;
+
     }
   }
 
   pollActivePositionPrevious() {
-    this.poll[this.pollActivePosition].active = false;
-    this.pollActivePosition == this.pollActivePosition--;
-    this.poll[this.pollActivePosition].active = true;
+    this.poll.questions[this.pollActivePosition].active = false;
+    this.lastQuestion = false;
+    if (this.pollActivePosition > 0) {
+      this.pollActivePosition == this.pollActivePosition--;
+    }
+    this.poll.questions[this.pollActivePosition].active = true;
+
+    if (this.pollActivePosition == 0) {
+      this.firstQuestion = true;
+    } else {
+
+    }
+
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   vote() {
     this.sendVotes.emit(this.poll);
