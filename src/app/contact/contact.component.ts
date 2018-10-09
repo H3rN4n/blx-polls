@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormGroup, FormControl, Validators }   from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
@@ -7,19 +8,27 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
   @Output() sendContact: EventEmitter<any> = new EventEmitter<any>();
+
   contactInfo: Object = {
-    firstname: 'Hernan',
-    lastname: 'De Souza',
-    email: 'desouza03068922@gmail.com',
-    country: 'Argentina',
-    organization: 'Belatrix',
-    jobTitle: 'Dev',
-    comments: 'Hola como estan?'
+    firstname: '',
+    lastname: '',
+    email: '',
+    organization: '',
+    jobTitle: '',
+    comments: ''
   };
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    // this.contactInfo = new FormGroup({
+    //   'lastname': new FormControl("", [
+    //     Validators.required,
+    //     Validators.minLength(4)
+    //   ])
+    // });
+    
+  }
 
   send() {
     this.sendContact.emit(this.contactInfo);

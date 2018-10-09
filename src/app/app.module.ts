@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Injector } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule }   from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { createCustomElement } from '@angular/elements';
@@ -18,7 +19,8 @@ import { SplashComponent } from './splash/splash.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   // bootstrap: [AppComponent],
   entryComponents:[
