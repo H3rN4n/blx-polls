@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+
 const ResultSchema = new Schema({
   contactInfo: {
     firstName: String,
@@ -16,4 +17,5 @@ const ResultSchema = new Schema({
     result: Boolean,
   }]
 });
+
 module.exports = mongoose.model('Result', ResultSchema);

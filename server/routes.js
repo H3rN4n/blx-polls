@@ -4,63 +4,65 @@ const Poll = require('./models/Poll');
 const Result = require('./models/Result');
 
 module.exports = [{
-  method: 'GET',
-  path: '/api/polls/{id}',
-  handler: (request, h) => {
-    return Poll.findOne({
-      _id: request.params.id
-    }, (error, poll) => {
-      if (error) {
-        console.error(error);
-      }
+    method: 'GET',
+    path: '/api/polls/{id}',
+    handler: (request, h) => {
+      return Poll.findOne({
+        _id: request.params.id
+      }, (error, poll) => {
+        if (error) {
+          console.error(error);
+        }
 
-      return poll.questions.map((question) => {
-        return question.answers = question.answers.map((answer) => {
-          delete answer.correct;
-          return answer;
+        return poll.questions.map((question) => {
+          return question.answers = question.answers.map((answer) => {
+            delete answer.correct;
+            return answer;
+          });
         });
+
+      });
+    }
+  },
+  {
+    method: ['PUT', 'POST'],
+    path: '/api/polls/{id}',
+    handler: (request, h) => {
+      const poll = new Poll({
+        title: request.body.title,
+        questions: request.body.questions
       });
 
-    });
-  }
-},
-{
-  method: ['PUT', 'POST'],
-  path: '/api/polls/{id}',
-  handler: (request, h) => {
-    const poll = new Poll({
-      title: request.body.title,
-      questions: request.body.questions
-    });
+      return poll.save((error, poll) => {
+        if (error) {
+          console.error(error);
+        }
+        return poll._id;
+      });
+    }
+  },
+  {
+    method: ['POST'],
+    path: '/api/results',
+    handler: async (request, h) => {
+      var payload = request.payload;
+      
+      const result = new Result({
+        pollId: payload.pollId,
+        contactInfo: payload.contactInfo,
+        questionsResult: payload.contactInfo
+      });
 
-    return poll.save((error, poll) => {
-      if (error) {
-        console.error(error);
-      }
-      return poll;
-    });
-  }
-},
-{
-  method: ['POST'],
-  path: '/api/results',
-  handler: (request, h) => {
-    var payload = request.payload;
-    console.log(payload);
+      result.save((error, result) => {
+        if (error) {
+          console.error(error);
+          return error;
+        }
 
-    const result = new Result({
-      pollId: payload.pollId,
-      contactInfo: payload.contactInfo,
-      questionsResult: payload.contactInfo
-    });
+        return result;
+      });
 
-    return result.save((error, result) => {
-      if (error) {
-        console.error(error);
-        return error;
-      }
-      return result;
-    });
+      return "Saved";
+    }
   }
-}
 ];
