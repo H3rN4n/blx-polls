@@ -3,6 +3,8 @@ import { NgModule, Injector } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule }   from '@angular/forms';
 
+import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
+
 import { AppComponent } from './app.component';
 import { createCustomElement } from '@angular/elements';
 import { PollComponent } from './poll/poll.component';
@@ -20,7 +22,8 @@ import { SplashComponent } from './splash/splash.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ScrollToModule.forRoot()
   ],
   // bootstrap: [AppComponent],
   entryComponents:[

@@ -1,11 +1,5 @@
-<div class="poll-container animated">
-  <!-- <div class="poll hidden" *ngFor="let question of poll" [class.hidden]="!question.active">
-    <h2>Poll: {{question.title | uppercase}}</h2>
-    <ul>
-      <li *ngFor="let item of question.answers">{{item.text}}</li>
-    </ul>
-  </div> -->
-  <section class="poll-section">
+<div class="poll-container animated" id="poll-container">
+  <section class="poll-section" id="poll-section">
     <header>
       <div class="main-container box-sizing-border logo-box">
         <a href="#">
@@ -30,10 +24,12 @@
                 </div>
               </div>
             </div>
-            <button class="option no-selected-option my-transition" *ngFor="let answer of question.answers">
+            <button class="option no-selected-option my-transition" (click)="selectAnswer(answer, i)" [class.no-selected-option]="!answer.selected"
+              [class.selected-option]="answer.selected" *ngFor="let answer of question.answers; let i = index">
               <div class="row">
                 <div class="icon-container">
-                  <div class="letter box-sizing-border">a</div>
+                  <div *ngIf="!answer.selected" class="letter box-sizing-border">{{letterArray[i]}}</div>
+                  <div *ngIf="answer.selected" class="icon box-sizing-border"></div>
                 </div>
                 <div class="answer-container box-sizing-border">
                   <p class="my-transition">{{answer.text}}</p>

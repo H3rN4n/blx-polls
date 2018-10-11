@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { ScrollService } from '../scroll.service';
 
 @Component({
   selector: 'app-splash',
@@ -9,14 +10,15 @@ export class SplashComponent implements OnInit {
   @Output()
   next: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor() { }
+  constructor(private _scrollS: ScrollService) { }
 
   ngOnInit() {
-
+    
   }
 
   agree(){
-    this.next.emit(true);
+    this._scrollS.triggerScrollToPoll();
+    // this.next.emit(true);
   }
 
 }
