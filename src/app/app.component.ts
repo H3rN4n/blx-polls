@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   selector: 'user-poll',
   templateUrl: './app.component.html',
   styleUrls: ['./../assets/css/styles.css', './app.component.css'],
-  encapsulation: ViewEncapsulation.Native
+  // encapsulation: ViewEncapsulation.Native
 })
 export class AppComponent implements OnInit {
   @Input() pollId: string = '5bb625cd57cd4127989cc4f8';

@@ -12,11 +12,10 @@ export class ScrollService {
 
   public triggerScrollToPoll() {
     const config: ScrollToConfigOptions = {
-      container: 'poll-container',
-      target: 'poll-section',
-      duration: 650,
+      target: 'poll-container',
+      duration: 850,
       easing: 'easeOutElastic',
-      offset: 20
+      offset: 10
     };
 
     this._scrollToService.scrollTo(config);
@@ -24,7 +23,10 @@ export class ScrollService {
 
   public triggerScrollToContact() {
     const config: ScrollToConfigOptions = {
-      target: 'contact-container'
+      target: 'form-section',
+      duration: 650,
+      easing: 'easeOutElastic',
+      offset: 20
     };
 
     this._scrollToService.scrollTo(config);

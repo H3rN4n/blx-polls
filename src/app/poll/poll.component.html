@@ -40,7 +40,7 @@
           <div class="buttons-poll-container poll-btns-desktop">
             <a class="poll-ghost-button my-transition left" *ngIf="!firstQuestion" (click)="pollActivePositionPrevious();">anterior</a>
             <a class="poll-ghost-button my-transition right" *ngIf="!lastQuestion" (click)="pollActivePositionNext();">siguiente</a>
-            <a class="poll-full-button my-transition right" *ngIf="lastQuestion" (click)="vote();">terminar</a>
+            <a class="poll-full-button my-transition right" [ngx-scroll-to]="'#form-section'" *ngIf="lastQuestion" (click)="vote();">terminar</a>
             <div class="my-clearfix"></div>
           </div>
         </div>

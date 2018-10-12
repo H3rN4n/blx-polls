@@ -40,11 +40,7 @@ export class ContactComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
-    setInterval(() => {
-      console.log(this.contactInfo);
-    }, 1000);
-  }
+  ngOnInit() {}
 
   send() {
     this.sendContact.emit(this.contactInfo.value);
