@@ -46,11 +46,10 @@ module.exports = [{
     path: '/api/results',
     handler: async (request, h) => {
       var payload = request.payload;
-      
       const result = new Result({
         pollId: payload.pollId,
         contactInfo: payload.contactInfo,
-        questionsResult: payload.contactInfo
+        results: payload.pollResult
       });
 
       result.save((error, result) => {

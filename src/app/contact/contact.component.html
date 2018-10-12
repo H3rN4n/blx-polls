@@ -11,28 +11,16 @@
       <div class="poll-box">
         <h2 class="section-title">Completá el formulario y participá</h2>
         <div class="form-box">
-          <form>
-            <input class="w-input box-sizing-border" placeholder="Apellidos*" type="text" required [(ngModel)]="contactInfo.lastname"
-              name="lastname">
-            <div *ngIf="contactInfo.lastname.invalid && (contactInfo.lastname.dirty || contactInfo.lastname.touched)" class="alert alert-danger">
-
-              <div *ngIf="contactInfo.lastname.errors.required">
-                Name is required.
-              </div>
-              <div *ngIf="contactInfo.lastname.errors.minlength">
-                Name must be at least 4 characters long.
-              </div>
-            </div>
-            <input class="w-input box-sizing-border" placeholder="Nombre*" type="text" required [(ngModel)]="contactInfo.firstname" name="firstname">
-            <input class="w-input box-sizing-border" placeholder="Email*" type="text" required [(ngModel)]="contactInfo.email" name="email">
-            <input class="w-input box-sizing-border" placeholder="País*" type="text" required [(ngModel)]="contactInfo.country" name="country">
-            <input class="w-input box-sizing-border" placeholder="Organización" type="text" required [(ngModel)]="contactInfo.organization"
-              name="organization">
-            <input class="w-input box-sizing-border" placeholder="Empleo" type="text" required [(ngModel)]="contactInfo.jobTitle" name="jobtitle">
-            <textarea class="w-text-area box-sizing-border" placeholder="Preguntas y comentarios..." [(ngModel)]="contactInfo.comments"
-              name="comments"></textarea>
+          <form [formGroup]="contactInfo" (submit)="send()">
+            <input class="w-input box-sizing-border" placeholder="Apellidos*" type="text" required formControlName="lastname" name="lastname">
+            <input class="w-input box-sizing-border" placeholder="Nombre*" type="text" required formControlName="firstname" name="firstname">
+            <input class="w-input box-sizing-border" placeholder="Email*" type="text" required formControlName="email" name="email">
+            <input class="w-input box-sizing-border" placeholder="País*" type="text" required formControlName="country" name="country">
+            <input class="w-input box-sizing-border" placeholder="Organización" type="text" required formControlName="organization" name="organization">
+            <input class="w-input box-sizing-border" placeholder="Empleo" type="text" required formControlName="jobTitle" name="jobtitle">
+            <textarea class="w-text-area box-sizing-border" placeholder="Preguntas y comentarios..." formControlName="comments" name="comments"></textarea>
             <div class="text-center">
-              <button class="poll-full-button my-transition" (click)="send()">enviar</button>
+              <button class="poll-full-button my-transition send-contact-btn" [disabled]="contactInfo.invalid" type="submit">enviar</button>
             </div>
           </form>
         </div>

@@ -12,10 +12,7 @@ const ResultSchema = new Schema({
     comments: String
   },
   pollId: String,
-  results: [{
-    questionId: String,
-    result: Boolean,
-  }]
+  results: Object
 });
 
 module.exports = mongoose.model('Result', ResultSchema);

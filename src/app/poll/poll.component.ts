@@ -29,6 +29,9 @@ export class PollComponent implements OnInit {
   }
 
   selectAnswer(answer, index) {
+    this.poll.questions[this.pollActivePosition].answers.forEach(element => {
+      element.selected = false;
+    });
     this.poll.questions[this.pollActivePosition].answers[index].selected = !this
       .poll.questions[this.pollActivePosition].answers[index].selected;
   }

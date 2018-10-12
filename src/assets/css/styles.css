@@ -743,10 +743,12 @@ footer .logo-box {
   .w-input {
     font-size: 0.8rem;
     padding: 12px 22px;
+    outline: none;
   }
   .w-text-area {
     font-size: 0.8rem;
     padding: 12px 20px;
+    outline: none;
   }
   /* end of FORM SECTION */
 }

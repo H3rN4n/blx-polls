@@ -1,5 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl, Validators }   from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FormBuilder
+} from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
@@ -8,29 +13,40 @@ import { FormGroup, FormControl, Validators }   from '@angular/forms';
 })
 export class ContactComponent implements OnInit {
   @Output() sendContact: EventEmitter<any> = new EventEmitter<any>();
-
-  contactInfo: Object = {
-    firstname: '',
-    lastname: '',
-    email: '',
-    organization: '',
-    jobTitle: '',
-    comments: ''
-  };
+  contactInfo = new FormGroup({
+    lastname: new FormControl('', [
+      Validators.required,
+      Validators.minLength(4)
+    ]),
+    firstname: new FormControl('', [
+      Validators.required,
+      Validators.minLength(4)
+    ]),
+    email: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    country: new FormControl('', [
+      Validators.required,
+      Validators.minLength(4)
+    ]),
+    organization: new FormControl('', [
+      Validators.required,
+      Validators.minLength(4)
+    ]),
+    jobTitle: new FormControl('', [
+      Validators.required,
+      Validators.minLength(4)
+    ]),
+    comments: new FormControl('', [])
+  });
 
   constructor() {}
 
   ngOnInit() {
-    // this.contactInfo = new FormGroup({
-    //   'lastname': new FormControl("", [
-    //     Validators.required,
-    //     Validators.minLength(4)
-    //   ])
-    // });
-    
+    setInterval(() => {
+      console.log(this.contactInfo);
+    }, 1000);
   }
 
   send() {
-    this.sendContact.emit(this.contactInfo);
+    this.sendContact.emit(this.contactInfo.value);
   }
 }
